@@ -1,29 +1,38 @@
-const modules = require(`./funBin.js`);
-const gameText = document.getElementById(`gameText`)
-class creature {
-    constructor(name, species) {
-        this.name=name;
-        this.species=species;
-        this.health=100;
-        this.satiation=100;
-        this.happiness=100;
-        this.energy=100;
+// const modules = require(`./funBin.js`);
+const gameText = document.getElementById(`gameText`)                                                                    // Shorthand for the main game text 
+let playerName = "" + document.getElementById(`fname`).value + " " + document.getElementById(`lname`).value;            // Reading player name from inputs
+let playerGender = document.getElementById(`gender`).value                                                              // Reading player gender from inputs
+let playerPronouns = []
+switch (playerGender){                                                                                                  // Setting player pronouns based on gender
+    case male       :   playerPronouns=[`he`, `him`, `his`];break;
+    case female     :   playerPronouns=[`her`, `her`, `hers`];break;
+    case neuter     :   playerPronouns=[`they`, `them`, `theirs`];break;
+    default         :   console.log(`Invalid Gender`);break;
+}
+class creature {                                                                                                        // Defining creature class
+    constructor(name, species) {                                                                                        // 
+        this.name=name;                                                                                                 // Name of object from argument
+        this.species=species;                                                                                           // Species of object from argument
+        this.health=100;                                                                                                // Health set to 100
+        this.satiation=100;                                                                                             // Satiation set to 100
+        this.happiness=100;                                                                                             // Happiness set to 100
+        this.energy=100;                                                                                                // Energy set to 100
     }
-    eats(){
+    eats(){                                                                                                             // Eating method increases satiation if below 50, by 50
         if (this.satiation<=50){gameText.innerText=`${this.name} digs in to a hearty meal`
             this.satiation+=50
         if (this.energy<=50){this.energy+=50}
             else if (this.energy>50)this.energy=100}
             else {gameText.innerText=`${this.name} is too full to eat right now`}
     }
-    rests(){
+    rests(){                                                                                                            // Resting method increases rest if below 50, by 50
         if (this.energy<=50){gameText.innerText=`${this.name} begins to rest`
             this.energy+=50}
             else {gameText.innerText=`${this.name} isn't tired enough to rest`}
     }
-    plays(){
-        if (this.happiness<=50 && this.health>=50 && this.satiation>=50 && this.energy>=50){
-            gameText.innerText=`${this.name} is happy that you played with them`
+    plays(){                                                                                                            // Playing method increases happiness by 50, 
+        if (this.happiness<=50 && this.health>=50 && this.satiation>=50 && this.energy>=50){                            // if happiness is below 50
+            gameText.innerText=`${this.name} is happy that you played with them`                                        // and all of energy/health/satiation are above 50
             this.happiness+=50}
         else if (this.health<50){
             gameText.innerText=`${this.name} is too unwell to play right now`
@@ -35,21 +44,24 @@ class creature {
             gameText.innerText=`${this.name} is too tired to play right now`
         }
     }
-    setName(){
-            if (document.getElementById(`enterCreatureName`).value!=false){
-                this.name=document.getElementById(`enterCreatureName`).value;
+    setName(){                                                                                                          // Object is created with default name
+            if (document.getElementById(`enterCreatureName`).value!=false){                                             // then updated with player input
+                this.name=document.getElementById(`enterCreatureName`).value;                                           // provided this is not a null string
                 document.getElementById(`enterCreatureName`).innerText=""}
                 else {console.log(`Empty name cannot be applied`)}
-
     }
+    updateBars(){}
 }
-document.getElementById(`iChooseShark`, () => {
+document.getElementById(`iChooseShark`, () => {                                                                         // Event handler for creating Shark
     new creature(Jaws, shark)
 });
-document.getElementById(`iChooseTiger`, () => {
+document.getElementById(`iChooseTiger`, () => {                                                                         // Event handler for creating Tiger
     new creature(Tigger, tiger)
 });
-document.getElementById(`iChooseEagle`, () => {
+document.getElementById(`iChooseEagle`, () => {                                                                         // Event handler for creating Eagle
     new creature(Eddy, eagle)
 });
-document.getElementById(`setNameButton`, () => {})
+document.getElementById(`setNameButton`, () => {                                                                        // Event handler for naming creature
+
+})
+document.getElementById(`start`, () => {startGame()})                                                                   // Event handler for starting game
