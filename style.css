@@ -1,0 +1,14 @@
+colours {
+    color: #49A078, #216869, #1F2421, #BB9F06,  #EEF4ED;
+} 
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+.main {
+    background-image: linear-gradient(to top right, #216869 30%, #49A078 80%);
+    height: 100vh;
+}
