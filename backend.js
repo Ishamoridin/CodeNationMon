@@ -1,6 +1,7 @@
 // const modules = require(`./funBin.js`);
 const gameText = document.getElementById(`gameText`)                                                                    // Shorthand for the main game text 
-let playerName = "" + document.getElementById(`fname`).value + " " + document.getElementById(`lname`).value;            // Reading player name from inputs
+let playerFullName = "" + document.getElementById(`fname`).value + " " + document.getElementById(`lname`).value;        // Reading full player name from inputs
+let playerName = "" + document.getElementById(`fname`).value                                                            // Reading first name from inputs
 let playerGender = document.getElementById(`gender`).value                                                              // Reading player gender from inputs
 let playerPronouns = []
 switch (playerGender){                                                                                                  // Setting player pronouns based on gender
@@ -34,17 +35,17 @@ class creature {                                                                
     }
     plays(){                                                                                                            // Playing method increases happiness by 50, 
         if (this.happiness<=50 && this.health>=50 && this.satiation>=50 && this.energy>=50){                            // if happiness is below 50
-            gameText.innerText=`${this.name} is happy that you played with them`                                        // and all of energy/health/satiation are above 50
+            gameText.innerText=`${this.name} is happy that you played with them, ${playerName}`                         // and all of energy/health/satiation are above 50
             this.happiness+=50
         }
         else if (this.health<50){
-            gameText.innerText=`${this.name} is too unwell to play right now`
+            gameText.innerText=`${this.name} is too unwell to play right now, ${playerName}`                            // Returns this message if health is too low
         }
         else if (this.satiation<50){
-            gameText.innerText=`${this.name} is too hungry to play right now`
+            gameText.innerText=`${this.name} is too hungry to play right now`                                           // Returns this message if satiation is too low
         }
         else if (this.energy<50){
-            gameText.innerText=`${this.name} is too tired to play right now`
+            gameText.innerText=`${this.name} is too tired to play right now`                                            // Returns this message if energy is too low
         };
         this.updateBars();
     }
@@ -61,15 +62,15 @@ class creature {                                                                
     }
 }
 document.getElementById(`iChooseShark`, () => {                                                                         // Event handler for creating Shark
-    new creature(Jaws, shark)
+    new creature(Timmy, shark)
 });
 document.getElementById(`iChooseTiger`, () => {                                                                         // Event handler for creating Tiger
-    new creature(Tigger, tiger)
+    new creature(Timmy, tiger)
 });
 document.getElementById(`iChooseEagle`, () => {                                                                         // Event handler for creating Eagle
-    new creature(Eddy, eagle)
+    new creature(Timmy, eagle)
 });
 document.getElementById(`setNameButton`, () => {                                                                        // Event handler for naming creature
-
+    Timmy.setName()
 })
 document.getElementById(`start`, () => {startGame()})                                                                   // Event handler for starting game
