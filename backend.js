@@ -11,7 +11,9 @@ class creature {
     }
     eats(){
         if (this.satiation<=50){gameText.innerText=`${this.name} digs in to a hearty meal`
-            this.satiation+=50}
+            this.satiation+=50
+        if (this.energy<=50){this.energy+=50}
+            else if (this.energy>50)this.energy=100}
             else {gameText.innerText=`${this.name} is too full to eat right now`}
     }
     rests(){
@@ -33,4 +35,21 @@ class creature {
             gameText.innerText=`${this.name} is too tired to play right now`
         }
     }
+    setName(){
+            if (document.getElementById(`enterCreatureName`).value!=false){
+                this.name=document.getElementById(`enterCreatureName`).value;
+                document.getElementById(`enterCreatureName`).innerText=""}
+                else {console.log(`Empty name cannot be applied`)}
+
+    }
 }
+document.getElementById(`iChooseShark`, () => {
+    new creature(Jaws, shark)
+});
+document.getElementById(`iChooseTiger`, () => {
+    new creature(Tigger, tiger)
+});
+document.getElementById(`iChooseEagle`, () => {
+    new creature(Eddy, eagle)
+});
+document.getElementById(`setNameButton`, () => {})
