@@ -24,16 +24,19 @@ class creature {                                                                
         if (this.energy<=50){this.energy+=50}
             else if (this.energy>50)this.energy=100}
             else {gameText.innerText=`${this.name} is too full to eat right now`}
+            this.updateBars()
     }
     rests(){                                                                                                            // Resting method increases rest if below 50, by 50
         if (this.energy<=50){gameText.innerText=`${this.name} begins to rest`
             this.energy+=50}
             else {gameText.innerText=`${this.name} isn't tired enough to rest`}
+            this.updateBars();
     }
     plays(){                                                                                                            // Playing method increases happiness by 50, 
         if (this.happiness<=50 && this.health>=50 && this.satiation>=50 && this.energy>=50){                            // if happiness is below 50
             gameText.innerText=`${this.name} is happy that you played with them`                                        // and all of energy/health/satiation are above 50
-            this.happiness+=50}
+            this.happiness+=50
+        }
         else if (this.health<50){
             gameText.innerText=`${this.name} is too unwell to play right now`
         }
@@ -42,15 +45,20 @@ class creature {                                                                
         }
         else if (this.energy<50){
             gameText.innerText=`${this.name} is too tired to play right now`
-        }
+        };
+        this.updateBars();
     }
     setName(){                                                                                                          // Object is created with default name
             if (document.getElementById(`enterCreatureName`).value!=false){                                             // then updated with player input
-                this.name=document.getElementById(`enterCreatureName`).value;                                           // provided this is not a null string
-                document.getElementById(`enterCreatureName`).innerText=""}
+                this.name=document.getElementById(`enterCreatureName`).value}                                           // provided this is not a null string
                 else {console.log(`Empty name cannot be applied`)}
     }
-    updateBars(){}
+    updateBars(){                                                                                                       // Method for updating on-screen bars
+        healthBar.value=this.health;                                                                                    // Included in every method that alters their values
+        satiationBar.value=this.satiation;
+        energyBar.value=this.energy;
+        happinessBar.value=this.happiness;
+    }
 }
 document.getElementById(`iChooseShark`, () => {                                                                         // Event handler for creating Shark
     new creature(Jaws, shark)
