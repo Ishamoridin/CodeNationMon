@@ -11,6 +11,7 @@ colours {
     margin: 0;
     padding: 0;
     box-sizing: inherit;
+    font-family: 'Silkscreen', cursive;
 }
 
 body {
@@ -86,7 +87,8 @@ main .main-content .player-input-form {
     border-radius: 8px;
 }
 
-.player-details-input option {
+/* .player-details-input  */
+option {
     color: #1F2421;
 }
 
@@ -111,5 +113,92 @@ main .main-content .player-input-form {
 /* selected-animal screen: */
 
 .selected-animal-screen {
-    
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.selected-animal-screen h2 {
+    font-family: 'Silkscreen', cursive;
+    font-size: 2rem;
+    font-weight: bold;
+    -webkit-text-stroke: 2px #1F2421;
+    text-align: center;
+}
+
+.selected-animal-0 {
+    background-color: rgba(247, 87, 1, 0.541);
+    border-radius: 15px;
+    margin: 1.3rem;
+    height: 40vh;
+    width: 50vw;
+}
+
+.selected-animal-1 {
+    background-color: rgba(153,186,221, 0.541);
+    border-radius: 15px;
+    margin: 1.3rem;
+    height: 40vh;
+    width: 50vw;
+}
+
+.selected-animal-2 {
+    background-color: rgba(185,163,122, 0.541);
+    border-radius: 15px;
+    margin: 1.3rem;
+    height: 40vh;
+    width: 50vw;
+}
+
+.selected-animal-screen .animal-name #tiger {
+    color: #F96815;
+}
+
+.selected-animal-screen .animal-name #shark {
+    color: #99BADD;
+}
+
+.selected-animal-screen .animal-name #eagle {
+    color: #996515;
+}
+
+.animal-grid {
+    display: grid;
+    grid-template-columns: 50% auto;
+    height: 80%;
+}
+
+.animal-box {
+    /* width: 50%;
+    height: 30vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    width: 100%;
+}
+
+.animal-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    width: 100%;
+}
+
+.animal-details #nickname {
+    width: 90%;
+}
+
+.animal-options label, input {
+    margin-bottom: 1.5rem;
+    color: #EEF4ED;
+    /* background-color: rgba(255, 255, 255, 0.233); */
+}
+
+.animal-options input {
+    background-color: rgba(255, 255, 255, 0.233);
+    border-radius: 5px;
 }
