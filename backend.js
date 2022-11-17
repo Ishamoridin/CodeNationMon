@@ -4,6 +4,7 @@ let playerFullName = "" + document.getElementById(`fname`).value + " " + documen
 let playerName = "" + document.getElementById(`fname`).value                                                            // Reading first name from inputs
 let playerGender = document.getElementById(`gender`).value                                                              // Reading player gender from inputs
 let playerPronouns = []
+let healthBar, energyBar, satiationBar, happinessBar;                                                                   // Shorthand for bars
 switch (playerGender){                                                                                                  // Setting player pronouns based on gender
     case male       :   playerPronouns=[`he`, `him`, `his`];break;
     case female     :   playerPronouns=[`her`, `her`, `hers`];break;
