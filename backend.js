@@ -5,6 +5,7 @@ let playerName = "" + document.getElementById(`fname`).value                    
 let playerGender = document.getElementById(`gender`).value                                                              // Reading player gender from inputs
 let playerPronouns = []
 let healthBar, energyBar, satiationBar, happinessBar;                                                                   // Shorthand for bars
+let creatureName = ""
 switch (playerGender){                                                                                                  // Setting player pronouns based on gender
     case male       :   playerPronouns=[`he`, `him`, `his`];break;
     case female     :   playerPronouns=[`her`, `her`, `hers`];break;
@@ -12,9 +13,8 @@ switch (playerGender){                                                          
     default         :   console.log(`Invalid Gender`);break;
 }
 class creature {                                                                                                        // Defining creature class
-    constructor(name, species) {                                                                                        // 
+    constructor(name) {                                                                                        // 
         this.name=name;                                                                                                 // Name of object from argument
-        this.species=species;                                                                                           // Species of object from argument
         this.health=100;                                                                                                // Health set to 100
         this.satiation=100;                                                                                             // Satiation set to 100
         this.happiness=100;                                                                                             // Happiness set to 100
@@ -43,16 +43,17 @@ class creature {                                                                
             gameText.innerText=`${this.name} is too unwell to play right now, ${playerName}`                            // Returns this message if health is too low
         }
         else if (this.satiation<50){
-            gameText.innerText=`${this.name} is too hungry to play right now`                                           // Returns this message if satiation is too low
+            gameText.innerText=`${this.name} is too hungry to play right now, ${playerName}`                                           // Returns this message if satiation is too low
         }
         else if (this.energy<50){
-            gameText.innerText=`${this.name} is too tired to play right now`                                            // Returns this message if energy is too low
+            gameText.innerText=`${this.name} is too tired to play right now, ${playerName}`                                            // Returns this message if energy is too low
         };
         this.updateBars();
     }
     setName(){                                                                                                          // Object is created with default name
             if (document.getElementById(`enterCreatureName`).value!=false){                                             // then updated with player input
-                this.name=document.getElementById(`enterCreatureName`).value}                                           // provided this is not a null string
+                this.name=document.getElementById(`enterCreatureName`).value                                           // provided this is not a null string
+                creatureName=document.getElementById(`enterCreatureName`)}
                 else {console.log(`Empty name cannot be applied`)}
     }
     updateBars(){                                                                                                       // Method for updating on-screen bars
@@ -62,16 +63,84 @@ class creature {                                                                
         happinessBar.value=this.happiness;
     }
 }
-document.getElementById(`iChooseShark`, () => {                                                                         // Event handler for creating Shark
-    new creature(Timmy, shark)
+
+class shark extends creature {                                                                                          // Extending Creature class into Shark class
+    constructor(name) {    
+        super (name);
+        this.species=shark;                                                                                             // Setting species to shark
+    }
+    lurk() {                                                                                                            // Unique action for Shark class
+        if (this.satiation<=50){this.satiation+=50; gameText.innerText=`
+        ${creatureName} lurks in the depths, snatching up a meal as the opportunity arises.
+        All you hear is the ominous sound of your own heart beating DADUM, DADUM, DADUM`;
+            if (this.happiness<=50){this.happiness+=50}
+            else this.happiness=100}
+        else if (this.happiness<=50){this.happiness+=50; gameText.innerText=`While not hungry right now ${creatureName} still takes comfort in lurking beneath the depths, as they were feeling glum`}
+        else if (this.happiness>50){this.happiness=100; gameText.innerText=`${creatureName} isn't hungry right now and isn't interested in lurking, but appreciates you offering`}
+    }
+};
+
+class tiger extends creature {                                                                                          // Extending Creature class into Tiger class
+    constructor(name) {
+        super (name);
+        this.species=tiger;                                                                                             // Setting species to tiger
+    }
+    prowl() {                                                                                                           // Unique action for Tiger class
+        if (this.satiation<=50){this.satiation+=50;
+            gameText.innerText=`${creatureName} stalks the shadows of the jungle, seeking vulnerable and unwary prey to fill its belly`;
+            if (this.happiness<=50){this.happiness+=50}
+                else this.happiness=100
+                }
+            else if (this.happiness<=50){this.happiness+=50;
+                gameText.innerText=`${creatureName} stalks the shadows of the jungle, not seeking food but taking comfort in the hunt nontheless`}
+            else if (this.happiness>50){this.happiness=100;
+                gameText.innerText=`${creatureName} yawns lazily, declining to prowl the jungle but glad of the chance to do so`}
+    }
+};
+
+class eagle extends creature {                                                                                          // Extending Creature class into Eagle class
+    constructor(name) {
+        super (name);
+        this.species=eagle;
+    }
+    fly() {                                                                                                             // Unique action for Eagle class
+        if (this.energy<=50){gameText.innerText=`${creatureName} is too tired to take flight right now`}
+            else if (this.satiation<=50){this.satiation+=50;
+                gameText.innerText=`${creatureName} takes flight, using their keen vision to spot vulnerable prey and strike with precision`}
+            else if (this.satiation>50 && this.happiness<50){this.happiness+=50;this.satiation=100;gameText.innerText=`${creatureName} takes flight, hunting not for sustenance but for pleasure`}
+            else if (this.happiness>50){this.happiness=100;gameText.innerText=`${creatureName} remains sitting, choosing to stay with you instead of flying`}
+    }
+};
+
+document.getElementById(`iChooseShark`).addEventListener('click', () => {                                               // Event handler for creating Shark
+    const playerPet = new shark(Timmy)
 });
-document.getElementById(`iChooseTiger`, () => {                                                                         // Event handler for creating Tiger
-    new creature(Timmy, tiger)
+
+document.getElementById(`iChooseTiger`).addEventListener('click', () => {                                               // Event handler for creating Tiger
+    const playerPet =  new tiger(Timmy, tiger)
 });
-document.getElementById(`iChooseEagle`, () => {                                                                         // Event handler for creating Eagle
-    new creature(Timmy, eagle)
+
+document.getElementById(`iChooseEagle`).addEventListener('click', () => {                                               // Event handler for creating Eagle
+    const playerPet = new eagle(Timmy, eagle)
 });
-document.getElementById(`setNameButton`, () => {                                                                        // Event handler for naming creature
-    Timmy.setName()
+
+document.getElementById(`setNameButton`).addEventListener('click', () => {                                              // Event handler for naming creature
+    playerPet.setName()
 })
-document.getElementById(`start`, () => {startGame()})                                                                   // Event handler for starting game
+
+document.getElementById(`start`).addEventListener('click', () => {startGame()})                                         // Event handler for starting game
+
+document.getElementById(`play`).addEventListener(`click`, () => {playerPet.plays()})                                    // Event handler for Play button
+
+document.getElementById(`feed`).addEventListener(`click`, () => {playerPet.eats()})                                     // Event handler for Feed button
+
+document.getElementById(`rest`).addEventListener(`click`, () => {playerPet.rests()})                                    // Event handler for Rest button
+
+document.getElementById(`unique`).addEventListener(`click`, () => {                                                     // Event handler for unique action, dynamic with species
+    switch (this.species){
+        case shark:this.lurk();break;
+        case tiger:this.prowl();break;
+        case eagle:this.fly();break;
+        default: console.log(`invalid creature species`)
+    }
+})
