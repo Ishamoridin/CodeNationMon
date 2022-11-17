@@ -30,6 +30,8 @@ main {
     align-items: center;
 }
 
+/* Start screen: */
+
 main .header {
     font-family: 'Silkscreen', cursive;
     color: #BB9F06;
@@ -106,3 +108,8 @@ main .main-content .player-input-form {
     box-shadow: 3px 3px 3px #1F2421;
 }
 
+/* selected-animal screen: */
+
+.selected-animal-screen {
+    
+}
