@@ -145,7 +145,7 @@ function startGame() {
     console.log(`working`)
 playerFName=document.getElementById(`fname`).value;
 playerLName=document.getElementById(`lname`).value;
-playerGender=document.getElementById(`gender`);
+playerGender=document.getElementById(`gender`).value;
 assignPlayerPronouns();
 document.getElementById(`start-screen`).style.display=`none`;
 document.getElementById(`selected-animal-screen`).style.display=`inline`;
