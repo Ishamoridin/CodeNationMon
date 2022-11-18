@@ -198,15 +198,15 @@ document.getElementById(`confirm`).addEventListener(`click`, () => {
     document.getElementById(`play-screen`).style.display=`block`;
 })
 
-document.getElementById(`start`).addEventListener('click', () => {startGame()})                                         // Event handler for starting game
+document.getElementById("start").addEventListener('click', () => {startGame()})                                         // Event handler for starting game
 
-document.getElementById(`play`).addEventListener(`click`, () => {playerPet.plays()})                                    // Event handler for Play button
+document.getElementById("play").addEventListener(`click`, () => {playerPet.plays()})                                    // Event handler for Play button
 
-document.getElementById(`feed`).addEventListener(`click`, () => {playerPet.eats()})                                     // Event handler for Feed button
+document.getElementById("feed").addEventListener(`click`, () => {playerPet.eats()})                                     // Event handler for Feed button
 
-document.getElementById(`rest`).addEventListener(`click`, () => {playerPet.rests()})                                    // Event handler for Rest button
+document.getElementById("rest").addEventListener(`click`, () => {playerPet.rests()})                                    // Event handler for Rest button
 
-document.getElementById(`unique`).addEventListener(`click`, () => {                                                     // Event handler for unique action, dynamic with species
+document.getElementById("unique").addEventListener(`click`, () => {                                                     // Event handler for unique action, dynamic with species
     switch (this.species){
         case shark:this.lurk();break;
         case tiger:this.prowl();break;
