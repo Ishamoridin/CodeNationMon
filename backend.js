@@ -5,7 +5,6 @@ let playerName = "" + document.getElementById(`fname`).value                    
 let playerGender = document.getElementById(`gender`).value                                                              // Reading player gender from inputs
 let playerPronouns = []
 let healthBar, energyBar, satiationBar, happinessBar;                                                                   // Shorthand for bars
-let creatureName = ""
 switch (playerGender){                                                                                                  // Setting player pronouns based on gender
     case male       :   playerPronouns=[`he`, `him`, `his`];break;
     case female     :   playerPronouns=[`her`, `her`, `hers`];break;
@@ -30,7 +29,10 @@ class creature {                                                                
     }
     rests(){                                                                                                            // Resting method increases rest if below 50, by 50
         if (this.energy<=50){gameText.innerText=`${this.name} begins to rest`
-            this.energy+=50}
+            this.energy+=50;
+            if (this.health<=90){this.health+=10}                                                                       // And also heals the creature by up to 10
+            else if (this.health > 90){this.health=100}
+        }
             else {gameText.innerText=`${this.name} isn't tired enough to rest`}
             this.updateBars();
     }
@@ -39,14 +41,18 @@ class creature {                                                                
             gameText.innerText=`${this.name} is happy that you played with them, ${playerName}`                         // and all of energy/health/satiation are above 50
             this.happiness+=50
         }
+        else if (this.happiness>50 && this.energy>=50){
+            gameText.innerText=`${this.name} is ecstatic to play with you, to the point they tire themselves out`       // Minor negative consequence to playing while high happiness+energy
+            this.happiness=100;this.energy-=50                                                                          // Creature uses half a full energy bar
+        }
         else if (this.health<50){
             gameText.innerText=`${this.name} is too unwell to play right now, ${playerName}`                            // Returns this message if health is too low
         }
         else if (this.satiation<50){
-            gameText.innerText=`${this.name} is too hungry to play right now, ${playerName}`                                           // Returns this message if satiation is too low
+            gameText.innerText=`${this.name} is too hungry to play right now, ${playerName}`                            // Returns this message if satiation is too low
         }
         else if (this.energy<50){
-            gameText.innerText=`${this.name} is too tired to play right now, ${playerName}`                                            // Returns this message if energy is too low
+            gameText.innerText=`${this.name} is too tired to play right now, ${playerName}`                             // Returns this message if energy is too low
         };
         this.updateBars();
     }
@@ -112,6 +118,13 @@ class eagle extends creature {                                                  
     }
 };
 
+function tick() {
+        if (playerPet.satiation>0){playerPet.satiation--};
+        if (playerPet.satiation<50 && playerPet.energy>0){playerPet.energy--};
+        if (playerPet.energy<50 && playerPet.satiation<50){playerPet.health--};
+        if (playerPet.happiness<50){playerPet.energy--;playerPet.satiation--;playerPet.energy--};
+}
+
 document.getElementById(`iChooseShark`).addEventListener('click', () => {                                               // Event handler for creating Shark
     const playerPet = new shark(Timmy);
     document.getElementById(`unique`).innerText="Lurk"
@@ -147,3 +160,5 @@ document.getElementById(`unique`).addEventListener(`click`, () => {             
         default: console.log(`invalid creature species`)
     }
 })
+
+while (playerPet.health>0){setTimeout(tick(), 100)}
