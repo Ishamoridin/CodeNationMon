@@ -142,6 +142,7 @@ function tick() {
 };
 
 function startGame() {
+    console.log(`working`)
 playerFName=document.getElementById(`fname`).value;
 playerLName=document.getElementById(`lname`).value;
 playerGender=document.getElementById(`gender`);
