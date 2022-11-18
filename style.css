@@ -121,6 +121,24 @@ option {
     margin-top: 6rem;
 }
 
+button:hover {
+    cursor: pointer;
+    transform: scale(1.1,1.1);
+    box-shadow: 5px 5px 10px 5px #ffe602;
+}
+
+button:active {
+    transform: translate(-0.5%, 4px);
+}
+
+/* input:hover {
+    cursor: pointer;
+} */
+
+/* option:hover {
+    cursor: pointer;
+} */
+
 /* selected-animal screen: */
 
 .selected-animal-screen {
@@ -130,6 +148,20 @@ option {
     justify-content: space-evenly;
     align-items: center;
     margin-top: 3rem;
+}
+
+.selected-animal-screen-header {
+    position: relative;
+    top: 20vh;
+}
+
+.selected-animal-screen-header h1 {
+    width: 100%;
+    text-align: center;
+    font-family: 'Silkscreen', cursive;
+    color: #BB9F06;
+    font-size: 5rem;
+    font-weight: bold;
 }
 
 .selected-animal-screen h2 {
@@ -302,10 +334,14 @@ option {
     border-radius: 10px;
     padding: 0px 8px;
     color: #EEF4ED;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* .play-stats .stats-bar .progress-bar {
-    background-color: #BB9F06;
+    justify-content: space-between;
 } */
 
 .play-stats-animal .animal {

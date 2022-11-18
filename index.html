@@ -13,7 +13,7 @@
 
 <body>
     <main>
-        <div class="start-screen">
+        <div class="start-screen" id="start-screen">
             <section class="header">
                 <div class="title">
                     <h1>CodeNationMon</h1>
@@ -45,8 +45,14 @@
         </div>
 
 
+        <div class="selected-animal-screen-header">
+            <div class="title">
+                <h1>Choose Wisely!</h1>
+            </div>
+        </div>
 
-     <section class="selected-animal-screen">
+
+     <section class="selected-animal-screen" id="selected-animal-screen">
 
         <section class="selected-animal-0">
             <div class="animal-name">
@@ -142,14 +148,14 @@
         </section>
     </section>
 
-    <div class="player-decision-wrapper">
+    <div class="player-decision-wrapper" id="player-decision-wrapper">
         <div class="player-decision-box">
             <button id="go-back">Go Back</button>
             <button id="confirm">Confirm</button>
         </div>
     </div>
 
-    <section class="play-screen">
+    <section class="play-screen" id="play-screen">
         <div class="play-screen-header">
             <div class="title">
                 <h1>CodeNationMon</h1>
@@ -186,7 +192,7 @@
                 </div>
                     <div class="animal-box">
                         <div class="selected-animal-img">
-                            <img src="./images/tiger2.jpg"/>
+                            <img id ="game-img" src="./images/tiger2.jpg"/>
                         </div>
                     </div>
             </div>
