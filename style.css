@@ -23,15 +23,24 @@ body {
 }
 
 main {
-    height: 80vh;
-    width: 80vh;
+    height: 100vh;
+    width: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
     align-items: center;
 }
 
 /* Start screen: */
+
+.start-screen {
+    min-width: 80vh;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 main .header {
     font-family: 'Silkscreen', cursive;
@@ -59,15 +68,15 @@ main .main-content {
 main .main-content .player-details-input {
     display: flex;
     justify-content: center;
-    height: max-content;
+    height: 50%;
+    /* overflow: hidden; */
     position: relative;
-    bottom: 3vh;
 }
 
 main .main-content .player-input-form {
     display: flex;
     flex-direction: column;
-    height: max-content;
+    height: 100%;
     width: 50%;
     background-color: rgba(255, 255, 255, 0.233);
     padding: 40px 30px;
@@ -108,6 +117,7 @@ option {
     font-weight: bold;
     -webkit-text-stroke: 1.8px #1F2421;
     box-shadow: 3px 3px 3px #1F2421;
+    margin-top: 4rem;
 }
 
 /* selected-animal screen: */
@@ -118,6 +128,7 @@ option {
     width: 100%;
     justify-content: space-around;
     align-items: center;
+    margin-top: 3rem;
 }
 
 .selected-animal-screen h2 {
