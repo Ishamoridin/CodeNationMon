@@ -13,7 +13,7 @@ switch (playerGender){                                                          
     default         :   console.log(`Invalid Gender`);break;
 }
 class creature {                                                                                                        // Defining creature class
-    constructor(name) {                                                                                        // 
+    constructor(name) {                                                                                                 // 
         this.name=name;                                                                                                 // Name of object from argument
         this.health=100;                                                                                                // Health set to 100
         this.satiation=100;                                                                                             // Satiation set to 100
@@ -113,15 +113,18 @@ class eagle extends creature {                                                  
 };
 
 document.getElementById(`iChooseShark`).addEventListener('click', () => {                                               // Event handler for creating Shark
-    const playerPet = new shark(Timmy)
+    const playerPet = new shark(Timmy);
+    document.getElementById(`unique`).innerText="Lurk"
 });
 
 document.getElementById(`iChooseTiger`).addEventListener('click', () => {                                               // Event handler for creating Tiger
-    const playerPet =  new tiger(Timmy, tiger)
+    const playerPet =  new tiger(Timmy);
+    document.getElementById(`unique`).innerText="Prowl"
 });
 
 document.getElementById(`iChooseEagle`).addEventListener('click', () => {                                               // Event handler for creating Eagle
-    const playerPet = new eagle(Timmy, eagle)
+    const playerPet = new eagle(Timmy);
+    document.getElementById(`unique`).innerText="Fly"
 });
 
 document.getElementById(`setNameButton`).addEventListener('click', () => {                                              // Event handler for naming creature
