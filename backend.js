@@ -11,19 +11,20 @@ let chosenCreature = ""
 let playerPet
 let petChoice
 let timePlayed = 0
+let creatureName
 const energyBar=document.getElementById(`energy`)                                                                       // 
 const satiationBar=document.getElementById(`satiation`)                                                                 // 
 const happinessBar=document.getElementById(`energy`)                                                                    // Shorthand for bars
 function assignPlayerPronouns() {switch (playerGender){                                                                 // Setting player pronouns based on gender
-    case male       :   playerPronouns=[`he`, `him`, `his`];break;
-    case female     :   playerPronouns=[`her`, `her`, `hers`];break;
-    case neuter     :   playerPronouns=[`they`, `them`, `theirs`];break;
+    case `male`       :   playerPronouns=[`he`, `him`, `his`];break;
+    case `female`     :   playerPronouns=[`her`, `her`, `hers`];break;
+    case `neuter`     :   playerPronouns=[`they`, `them`, `theirs`];break;
     default         :   console.log(`Invalid Gender`);break;
 }}
 function assignCreaturePronouns() {switch (creatureGender){                                                             // Setting player pronouns based on gender
-    case male       :   creaturePronouns=[`he`, `him`, `his`];break;
-    case female     :   creaturePronouns=[`her`, `her`, `hers`];break;
-    case neuter     :   creaturePronouns=[`they`, `them`, `theirs`];break;
+    case `male`       :   creaturePronouns=[`he`, `him`, `his`];break;
+    case `female`     :   creaturePronouns=[`her`, `her`, `hers`];break;
+    case `neuter`     :   creaturePronouns=[`they`, `them`, `theirs`];break;
     default         :   console.log(`Invalid Gender`);break;
 }}
 class creature {                                                                                                        // Defining creature class
@@ -71,11 +72,8 @@ class creature {                                                                
         };
         this.updateBars();
     }
-    setName(){                                                                                                          // Object is created with default name
-            if (document.getElementById(`enterCreatureName`).value!=false){                                             // then updated with player input
-                this.name=document.getElementById(`enterCreatureName`).value                                            // provided this is not a null string
-                creatureName=document.getElementById(`enterCreatureName`)}
-                else {console.log(`Empty name cannot be applied`)}
+    setName(){   
+                document.getElementById(`nickname`).innerText=this.name
     }
     updateBars(){                                                                                                       // Method for updating on-screen bars
         healthBar.value=this.health;                                                                                    // Included in every method that alters their values
@@ -172,27 +170,30 @@ document.getElementById(`eagle`).addEventListener('click', () => {              
 
 document.getElementById(`confirm`).addEventListener(`click`, () => {
     switch (petChoice){
-        case tiger:{let playerPet =  new tiger(Timmy);
+        case tiger:{playerPet =  new tiger(Timmy);
             document.getElementById(`unique`).innerText="Prowl";
             playerPet.name=document.getElementById(`nickname-0`).value
             playerPet.gender=document.getElementById(`animal-gender-0`)};
             document.getElementById(`game-img`).src="./images/tiger2.jpg";
+            document.getElementById(`nickname`).innerText=document.getElementById(`nickname-0`).value;
         break;
-        case shark:{let playerPet = new shark(Timmy);
+        case shark:{playerPet = new shark(Timmy);
             document.getElementById(`unique`).innerText="Lurk";
             playerPet.name=document.getElementById(`nickname-1`).value
             playerPet.gender=document.getElementById(`animal-gender-1`)};
             document.getElementById(`game-img`).src="./images/shark.webp";
+            document.getElementById(`nickname`).innerText=document.getElementById(`nickname-0`).value;
         break;
-        case eagle:{let playerPet = new eagle(Timmy);
+        case eagle:{playerPet = new eagle(Timmy);
             document.getElementById(`unique`).innerText="Fly";
             playerPet.name=document.getElementById(`nickname-2`).value
             playerPet.gender=document.getElementById(`animal-gender-2`)};
             document.getElementById(`game-img`).src="./images/eagle.webp";
+            document.getElementById(`nickname`).innerText=document.getElementById(`nickname-0`).value;
+            
         break;
         default:
     };
-    playerPet.setName()
     assignCreaturePronouns();
     document.getElementById(`selected-animal-screen`).style.display=`none`;
     document.getElementById(`player-decision-wrapper`).style.display=`none`;
