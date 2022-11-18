@@ -1,16 +1,31 @@
 // const modules = require(`./funBin.js`);
 const gameText = document.getElementById(`gameText`)                                                                    // Shorthand for the main game text 
-let playerFullName = "" + document.getElementById(`fname`).value + " " + document.getElementById(`lname`).value;        // Reading full player name from inputs
-let playerName = "" + document.getElementById(`fname`).value                                                            // Reading first name from inputs
-let playerGender = document.getElementById(`gender`).value                                                              // Reading player gender from inputs
-let playerPronouns = []
-let healthBar, energyBar, satiationBar, happinessBar;                                                                   // Shorthand for bars
-switch (playerGender){                                                                                                  // Setting player pronouns based on gender
+let playerFName                                                                                                         // Reading first name from inputs
+let playerLName
+let playerGender                                                                                                        // Reading player gender from inputs
+let creatureGender
+let playerPronouns = []                                                                                                 // 
+let creaturePronouns = []
+let healthBar=document.getElementById(`health`)                                                                         // 
+let chosenCreature = ""
+let playerPet
+let petChoice
+let timePlayed = 0
+const energyBar=document.getElementById(`energy`)                                                                       // 
+const satiationBar=document.getElementById(`satiation`)                                                                 // 
+const happinessBar=document.getElementById(`energy`)                                                                    // Shorthand for bars
+function assignPlayerPronouns() {switch (playerGender){                                                                 // Setting player pronouns based on gender
     case male       :   playerPronouns=[`he`, `him`, `his`];break;
     case female     :   playerPronouns=[`her`, `her`, `hers`];break;
     case neuter     :   playerPronouns=[`they`, `them`, `theirs`];break;
     default         :   console.log(`Invalid Gender`);break;
-}
+}}
+function assignCreaturePronouns() {switch (creatureGender){                                                             // Setting player pronouns based on gender
+    case male       :   creaturePronouns=[`he`, `him`, `his`];break;
+    case female     :   creaturePronouns=[`her`, `her`, `hers`];break;
+    case neuter     :   creaturePronouns=[`they`, `them`, `theirs`];break;
+    default         :   console.log(`Invalid Gender`);break;
+}}
 class creature {                                                                                                        // Defining creature class
     constructor(name) {                                                                                                 // 
         this.name=name;                                                                                                 // Name of object from argument
@@ -58,7 +73,7 @@ class creature {                                                                
     }
     setName(){                                                                                                          // Object is created with default name
             if (document.getElementById(`enterCreatureName`).value!=false){                                             // then updated with player input
-                this.name=document.getElementById(`enterCreatureName`).value                                           // provided this is not a null string
+                this.name=document.getElementById(`enterCreatureName`).value                                            // provided this is not a null string
                 creatureName=document.getElementById(`enterCreatureName`)}
                 else {console.log(`Empty name cannot be applied`)}
     }
@@ -123,25 +138,64 @@ function tick() {
         if (playerPet.satiation<50 && playerPet.energy>0){playerPet.energy--};
         if (playerPet.energy<50 && playerPet.satiation<50){playerPet.health--};
         if (playerPet.happiness<50){playerPet.energy--;playerPet.satiation--;playerPet.energy--};
+        timeplayed++;document.getElementById(`time-played-bar`).innerText=`${(timePlayed/10)}s`;
+};
+
+function startGame() {
+playerFName=document.getElementById(`fname`).value;
+playerLName=document.getElementById(`lname`).value;
+playerGender=document.getElementById(`gender`);
+assignPlayerPronouns();
+document.getElementById(`start-screen`).style.display=`none`;
+document.getElementById(`selected-animal-screen`).style.display=`block`;
+document.getElementById(`player-decision-wrapper`).style.display=`block`;
 }
 
+document.getElementById(`start-screen`).style.display=`block`;
+document.getElementById(`selected-animal-screen`).style.display=`none`;
+document.getElementById(`player-decision-wrapper`).style.display=`none`;
+document.getElementById(`play-screen`).style.display=`none`
+
+
 document.getElementById(`iChooseShark`).addEventListener('click', () => {                                               // Event handler for creating Shark
-    const playerPet = new shark(Timmy);
-    document.getElementById(`unique`).innerText="Lurk"
+    petChoice=`shark`
 });
 
 document.getElementById(`iChooseTiger`).addEventListener('click', () => {                                               // Event handler for creating Tiger
-    const playerPet =  new tiger(Timmy);
-    document.getElementById(`unique`).innerText="Prowl"
+    petChoice=`tiger`
 });
 
 document.getElementById(`iChooseEagle`).addEventListener('click', () => {                                               // Event handler for creating Eagle
-    const playerPet = new eagle(Timmy);
-    document.getElementById(`unique`).innerText="Fly"
+    petChoice=`eagle`
 });
 
-document.getElementById(`setNameButton`).addEventListener('click', () => {                                              // Event handler for naming creature
+document.getElementById(`confirm`).addEventListener(`click`, () => {
+    switch (petChoice){
+        case tiger:{let playerPet =  new tiger(Timmy);
+            document.getElementById(`unique`).innerText="Prowl";
+            playerPet.name=document.getElementById(`nickname-0`).value
+            playerPet.gender=document.getElementById(`animal-gender-0`)};
+            document.getElementById(`game-img`).src="./images/tiger2.jpg";
+        break;
+        case shark:{let playerPet = new shark(Timmy);
+            document.getElementById(`unique`).innerText="Lurk";
+            playerPet.name=document.getElementById(`nickname-1`).value
+            playerPet.gender=document.getElementById(`animal-gender-1`)};
+            document.getElementById(`game-img`).src="./images/shark.webp";
+        break;
+        case eagle:{let playerPet = new eagle(Timmy);
+            document.getElementById(`unique`).innerText="Fly";
+            playerPet.name=document.getElementById(`nickname-2`).value
+            playerPet.gender=document.getElementById(`animal-gender-2`)};
+            document.getElementById(`game-img`).src="./images/eagle.webp";
+        break;
+        default:
+    };
     playerPet.setName()
+    assignCreaturePronouns();
+    document.getElementById(`selected-animal-screen`).style.display=`none`;
+    document.getElementById(`player-decision-wrapper`).style.display=`none`;
+    document.getElementById(`play-screen`).style.display=`block`;
 })
 
 document.getElementById(`start`).addEventListener('click', () => {startGame()})                                         // Event handler for starting game
