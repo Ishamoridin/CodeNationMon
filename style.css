@@ -224,6 +224,8 @@ option {
 .player-decision-wrapper {
     width: 100%;
     text-align: center;
+    position:relative;
+    bottom: 20vh;
 }
 
 .player-decision-box {
@@ -232,7 +234,7 @@ option {
 }
 
 .player-decision-box button {
-    font-size: 1.5rem;
+    font-size: 2rem;
     padding: 15px 50px;
     border-radius: 15px;
     background-color: #BB9F06;
@@ -244,4 +246,6 @@ option {
     box-shadow: 3px 3px 3px #1F2421;
     margin-top: 12px;
 }
+
+
 
