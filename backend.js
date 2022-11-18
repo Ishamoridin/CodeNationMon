@@ -148,25 +148,25 @@ playerLName=document.getElementById(`lname`).value;
 playerGender=document.getElementById(`gender`);
 assignPlayerPronouns();
 document.getElementById(`start-screen`).style.display=`none`;
-document.getElementById(`selected-animal-screen`).style.display=`block`;
-document.getElementById(`player-decision-wrapper`).style.display=`block`;
+document.getElementById(`selected-animal-screen`).style.display=`inline`;
+document.getElementById(`player-decision-wrapper`).style.display=`inline`;
 }
 
-document.getElementById(`start-screen`).style.display=`block`;
+document.getElementById(`start-screen`).style.display=`inline`;
 document.getElementById(`selected-animal-screen`).style.display=`none`;
 document.getElementById(`player-decision-wrapper`).style.display=`none`;
 document.getElementById(`play-screen`).style.display=`none`
 
 
-document.getElementById(`iChooseShark`).addEventListener('click', () => {                                               // Event handler for creating Shark
+document.getElementById(`shark`).addEventListener('click', () => {                                               // Event handler for creating Shark
     petChoice=`shark`
 });
 
-document.getElementById(`iChooseTiger`).addEventListener('click', () => {                                               // Event handler for creating Tiger
+document.getElementById(`tiger`).addEventListener('click', () => {                                               // Event handler for creating Tiger
     petChoice=`tiger`
 });
 
-document.getElementById(`iChooseEagle`).addEventListener('click', () => {                                               // Event handler for creating Eagle
+document.getElementById(`eagle`).addEventListener('click', () => {                                               // Event handler for creating Eagle
     petChoice=`eagle`
 });
 
@@ -196,7 +196,7 @@ document.getElementById(`confirm`).addEventListener(`click`, () => {
     assignCreaturePronouns();
     document.getElementById(`selected-animal-screen`).style.display=`none`;
     document.getElementById(`player-decision-wrapper`).style.display=`none`;
-    document.getElementById(`play-screen`).style.display=`block`;
+    document.getElementById(`play-screen`).style.display=`inline`;
 })
 
 document.getElementById("start").addEventListener('click', () => {startGame()})                                         // Event handler for starting game
