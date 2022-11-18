@@ -13,35 +13,35 @@
 
 <body>
     <main>
-        <section class="header">
-            <div class="title">
-                <h1>CodeNationMon</h1>
-            </div>
-        </section>
+            <section class="header">
+                <div class="title">
+                    <h1>CodeNationMon</h1>
+                </div>
+            </section>
 
-        <section class="main-content">
-            <div class="player-details-input">
-                <form class="player-input-form">
-                    <label for="fname">First Name:</label>
-                    <input type="text" id="fname" name="fname">
-                    <br>
-                    <label for="lname">Last Name:</label>
-                    <input type="text" id="lname" name="lname">
-                    <br> 
-                    <label for="gender">Gender:</label>
-                    <select id="gender" name="gender">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="neuter">Neuter</option>
-                    </select>
-                </form>
-            </div>
+            <section class="main-content">
+                <div class="player-details-input">
+                    <form class="player-input-form">
+                        <label for="fname">First Name:</label>
+                        <input type="text" id="fname" name="fname">
+                        <br>
+                        <label for="lname">Last Name:</label>
+                        <input type="text" id="lname" name="lname">
+                        <br> 
+                        <label for="gender">Gender:</label>
+                        <select id="gender" name="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="neuter">Neuter</option>
+                        </select>
+                    </form>
+                </div>
 
-            <div class="start-game">
-                <button id="start">Start Game</button>
-            </div>
-        </section>
-
+                <div class="start-game">
+                    <button id="start">Start Game</button>
+                </div>
+            </section>
+    
 
 
 
@@ -53,11 +53,12 @@
 
     <section class="selected-animal-screen">
 
-        <section class="selected-animal-1">
+        <section class="selected-animal-0">
             <div class="animal-name">
-                <h2>Tiger</h2>
+                <h2 id="tiger">Tiger</h2>
             </div>
             
+        <div class="animal-grid">
             <div class="animal-box">
                 <div class="animal-img">
                     <img id="tiger" src="" alt="image of tiger"/>
@@ -79,18 +80,16 @@
                     </select>
                 </div>
             </div>
+        </div>
 
-            <div class="player-decision">
-                <button id="confirm">Confirm</button>
-                <button id="go-back">Go Back</button>
-            </div>
         </section>
             
-        <section class="selected-animal-2">
+        <section class="selected-animal-1">
             <div class="animal-name">
-                <h2>Shark</h2>
+                <h2 id="shark">Shark</h2>
             </div>
             
+        <div class="animal-grid">
             <div class="animal-box">
                 <div class="animal-img">
                     <img id="shark" src="" alt="image of shark"/>
@@ -112,18 +111,16 @@
                     </select>
                 </div>
             </div>
+        </div>
 
-            <div class="player-decision">
-                <button id="confirm">Confirm</button>
-                <button id="go-back">Go Back</button>
-            </div>
         </section>
 
-        <section class="selected-animal-3">
+        <section class="selected-animal-2">
             <div class="animal-name">
-                <h2>Eagle</h2>
+                <h2 id="eagle">Eagle</h2>
             </div>
-            
+        
+        <div class="animal-grid">
             <div class="animal-box">
                 <div class="animal-img">
                     <img id="eagle" src="" alt="image of eagle"/>
@@ -145,14 +142,17 @@
                     </select>
                 </div>
             </div>
+        </div>
 
-            <div class="player-decision">
-                <button id="confirm">Confirm</button>
-                <button id="go-back">Go Back</button>
-            </div>
         </section>
-
     </section>
+
+    <div class="player-decision-wrapper">
+        <div class="player-decision-box">
+            <button id="go-back">Go Back</button>
+            <button id="confirm">Confirm</button>
+        </div>
+    </div>
 
     <section class="play-screen">
         <div class="play-screen-header">
