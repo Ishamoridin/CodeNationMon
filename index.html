@@ -13,6 +13,7 @@
 
 <body>
     <main>
+        <div class="start-screen">
             <section class="header">
                 <div class="title">
                     <h1>CodeNationMon</h1>
@@ -41,17 +42,11 @@
                     <button id="start">Start Game</button>
                 </div>
             </section>
-    
+        </div>
 
 
 
-
-
-
-
-
-
-    <section class="selected-animal-screen">
+     <section class="selected-animal-screen">
 
         <section class="selected-animal-0">
             <div class="animal-name">
@@ -61,19 +56,19 @@
         <div class="animal-grid">
             <div class="animal-box">
                 <div class="animal-img">
-                    <img id="tiger" src="" alt="image of tiger"/>
+                    <img id="tiger" src="./images/tiger2.jpg" alt="image of tiger"/>
                 </div>
-                <div class="animal-platform">
+                <!-- <div class="animal-platform">
                     <img class="platform-img" src="" alt="animal platform"/>
-                </div>
+                </div> -->
             </div>
 
             <div class="animal-details">
                 <div class="animal-options">
                     <label for="nickname">Nickname:</label>
-                    <input type="text" id="nickname" name="nickname">
+                    <input type="text" id="nickname-0" name="nickname">
                     <br>
-                    <select id="animal-gender" name="animal-gender">
+                    <select id="animal-gender-0" name="animal-gender">
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="neuter">Neuter</option>
@@ -92,19 +87,19 @@
         <div class="animal-grid">
             <div class="animal-box">
                 <div class="animal-img">
-                    <img id="shark" src="" alt="image of shark"/>
+                    <img id="shark" src="./images/shark.webp" alt="image of shark"/>
                 </div>
-                <div class="animal-platform">
+                <!-- <div class="animal-platform">
                     <img class="platform-img" src="" alt="animal platform"/>
-                </div>
+                </div> -->
             </div>
 
             <div class="animal-details">
                 <div class="animal-options">
                     <label for="nickname">Nickname:</label>
-                    <input type="text" id="nickname" name="nickname">
+                    <input type="text" id="nickname-1" name="nickname">
                     <br>
-                    <select id="animal-gender" name="animal-gender">
+                    <select id="animal-gender-1" name="animal-gender">
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="neuter">Neuter</option>
@@ -123,19 +118,19 @@
         <div class="animal-grid">
             <div class="animal-box">
                 <div class="animal-img">
-                    <img id="eagle" src="" alt="image of eagle"/>
+                    <img id="eagle" src="./images/eagle.webp" alt="image of eagle"/>
                 </div>
-                <div class="animal-platform">
+                <!-- <div class="animal-platform">
                     <img class="platform-img" src="" alt="animal platform"/>
-                </div>
+                </div> -->
             </div>
 
             <div class="animal-details">
                 <div class="animal-options">
                     <label for="nickname">Nickname:</label>
-                    <input type="text" id="nickname" name="nickname">
+                    <input type="text" id="nickname-2" name="nickname">
                     <br>
-                    <select id="animal-gender" name="animal-gender">
+                    <select id="animal-gender-2" name="animal-gender">
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="neuter">Neuter</option>
@@ -165,29 +160,42 @@
             <p id="time-played-bar">Time played:</p>
         </div>
 
-        <div class="play-stats animal">
+        <div class="play-stats-animal">
             <div class="play-stats">
-                <div class="health-bar">
+                <div class="stats-bar">
                     <label for="health">Health: </label>
-                    <progress id="health" value="100" max="100"></progress>
+                    <progress class ="progress-bar" id="health" value="100" max="100"></progress>
                 </div>
-                <div class="satiation-bar">
+                <div class="stats-bar">
                     <label for="satiation">Satiation: </label>
-                    <progress id="satiation" value="100" max="100"></progress>
+                    <progress class ="progress-bar" id="satiation" value="100" max="100"></progress>
                 </div>
-                <div class="happiness-bar">
+                <div class="stats-bar">
                     <label for="happiness">Happiness: </label>
-                    <progress id="happiness" value="100" max="100"></progress>
+                    <progress class ="progress-bar" id="happiness" value="100" max="100"></progress>
                 </div>
-                <div class="energy-bar">
+                <div class="stats-bar">
                     <label for="energy">Energy: </label>
-                    <progress id="energy" value="100" max="100"></progress>
+                    <progress class ="progress-bar" id="energy" value="100" max="100"></progress>
                 </div>
             </div>
-            <div class="animal">
 
+            <div class="animal">
+                <div class="animal-nickname">
+                    <h3 id="nickname">insert nickname here</h3>
+                </div>
+                    <div class="animal-box">
+                        <div class="selected-animal-img">
+                            <img src="./images/tiger2.jpg"/>
+                        </div>
+                    </div>
             </div>
         </div>
+
+        <div class="game-text">
+            <p id="gameText">text here</p>
+        </div>
+
 
         <div class="controls">
             <div class="feed">
@@ -200,7 +208,7 @@
                 <button id="rest">Rest</button>
             </div>
             <div class="unique-method">
-                <button id="unique">animal method here</button>
+                <button id="unique">unique</button>
             </div>
         </div>
     </section>
